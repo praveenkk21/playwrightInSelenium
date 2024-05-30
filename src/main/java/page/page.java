@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -24,48 +23,6 @@ public class page {
         driver.get(url);
     }
 
-//    public WebElement locator(String element) {
-//        HashMap<String, String> el = new HashMap<>();
-//        String[] parts = element.split("=");
-//
-//        if (parts.length != 2) {
-//            throw new IllegalArgumentException("Invalid locator format. Expected 'type=value'");
-//        }
-//
-//        String locatorType = parts[0];
-//        String locatorValue = parts[1];
-//
-//        WebElement foundElement;
-//        switch (locatorType.toLowerCase()) {
-//            case "id":
-//                foundElement = driver.findElement(By.id(locatorValue));
-//                break;
-//            case "name":
-//                foundElement = driver.findElement(By.name(locatorValue));
-//                break;
-//            case "xpath":
-//                foundElement = driver.findElement(By.xpath(locatorValue));
-//                break;
-//            case "cssselector":
-//            case "css": // Handle both "cssselector" and "css" variations
-//                foundElement = driver.findElement(By.cssSelector(locatorValue));
-//                break;
-//            case "linktext":
-//                foundElement = driver.findElement(By.linkText(locatorValue));
-//                break;
-//            case "partiallinktext":
-//                foundElement = driver.findElement(By.partialLinkText(locatorValue));
-//                break;
-//            case "tagname":
-//                foundElement = driver.findElement(By.tagName(locatorValue));
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Unsupported locator type: " + locatorType);
-//        }
-//
-//        return foundElement;
-//    }
-
     public void fill(String value) {
         foundElement.clear();
         foundElement.sendKeys(value);
@@ -81,7 +38,7 @@ public class page {
         dropdown.selectByVisibleText(value); // Or use selectByIndex(int index)
     }
 
-    public page locator(String element) {
+    public page locator(@org.jetbrains.annotations.NotNull String element) {
         HashMap<String, String> el = new HashMap<>();
         String[] parts = element.split("=");
 
@@ -153,15 +110,22 @@ public class page {
         return this;
     }
 
-    public boolean toHaveCount(int i){
+    public page expect(List<WebElement> foundElements){
+        if (foundElements != null) {
+            System.out.println("Element is found : "+ foundElements);
+        } else {
+            System.out.println("Element not found!");
+        }
+        return this;
+    }
+    public boolean toHaveCount(int count){
         // Find all matching elements
         int productCount = foundElements.size();
         // Verify there's only i no 0f element
-        return productCount == i;
+        return productCount == count;
     }
 
-
-    public page locators(String element) {
+    public List<WebElement> locators(String element) {
         HashMap<String, String> el = new HashMap<>();
         String[] parts = element.split("=");
 
@@ -198,7 +162,7 @@ public class page {
             default:
                 throw new IllegalArgumentException("Unsupported locator type: " + locatorType);
         }
-        return this;
+        return foundElements;
     }
 
 }

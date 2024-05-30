@@ -1,24 +1,15 @@
 package org.example;
-import org.openqa.selenium.NoAlertPresentException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import page.*;
-import sun.jvm.hotspot.debugger.Page;
-
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.Duration;
+import java.util.List;
 
-import static io.netty.util.internal.SystemPropertyUtil.contains;
-import static org.example.customLibrary.*;
-import static org.example.customLibrary.jsonParse;
-import static org.openqa.selenium.support.ui.ExpectedConditions.or;
 
 @Test
 public class AppTest
@@ -41,12 +32,12 @@ public class AppTest
         page.locator("id=test").click();
         page.locator("id=test").selectDropdown("test");
         page.locator("id=test").fill("test");
-        page.getByRole("button", { name: 'Sign in' });
+        page.getByRole("button", "{ name: 'Sign in' }");
         page.getByLabel("text").click();
         WebElement n= (WebElement) page.getByText("Welcome, John");
         page.expect(n).toBeVisible();
-        WebElement n1= page.locators("id=test");
-        page.expect(n).toHaveCount(1);
+        List<WebElement> n1= page.locators("id=test");
+        page.expect(n1).toHaveCount(1);
 
 
         driver.get(url);
