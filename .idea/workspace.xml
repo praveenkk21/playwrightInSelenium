@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30b948f4-02fc-4e7a-98be-3229383c3eb2" name="Changes" comment="new">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/page/locator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/page/locator.java" afterDir="false" />
+    <list default="true" id="30b948f4-02fc-4e7a-98be-3229383c3eb2" name="Changes" comment="new improvement">
       <change beforePath="$PROJECT_DIR$/src/main/java/page/page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/page/page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +89,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new" />
-    <option name="LAST_COMMIT_MESSAGE" value="new" />
+    <MESSAGE value="new improvement" />
+    <option name="LAST_COMMIT_MESSAGE" value="new improvement" />
   </component>
 </project>
