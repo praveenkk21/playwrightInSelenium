@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 import page.*;
-import java.sql.SQLException;
 import java.time.Duration;
 import java.util.List;
 
@@ -14,37 +13,42 @@ import java.util.List;
 @Test
 public class AppTest
 {
-    WebDriver driver;
-    //System.out.println(org.openqa.selenium.version.Version.getVersion());
+    public static WebDriver driver;
 
-    @Test(priority=0) //,groups = {"dont run"}
-    public static WebDriver Chromedriver(String url)
-    {
-
+    @BeforeTest
+    static void chromeDriver(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
-        WebDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        page page=new page(driver);
-        page.goTo(url);
-        page.locator("id=test");
-        page.locator("id=test").click();
-        page.locator("id=test").selectDropdown("test");
-        page.locator("id=test").fill("test");
-        page.getByRole("button", "{ name: 'Sign in' }");
-        page.getByLabel("text").click();
-        WebElement n= (WebElement) page.getByText("Welcome, John");
-        page.expect(n).toBeVisible();
-        List<WebElement> n1= page.locators("id=test");
-        page.expect(n1).toHaveCount(1);
-
-
-        driver.get(url);
-        return driver;
     }
+
+    @Test
+    static void testMethod()
+    {
+        page page=new page(driver);
+        page.goTo("https://the-internet.herokuapp.com/");
+        WebElement element= page.locator("xpath=//*[text()='Dropdown']");
+        page.toHaveTitle("The Internet");
+        page.locator("xpath=//*[text()='Dropdown']").click();
+        page.locator("id=dropdown").selectDropdown("Option 1");
+        page.goBack();
+        page.getByText("Inputs").click();
+        page.locator("xpath=//*[@type='number']").fill("test");
+        page.goBack();
+        //page.getByLabel("text").click();
+        page.expect(page.getByText("Checkboxes")).toBeVisible();
+        page.getByText("Checkboxes").click();
+        page.locator("text= checkbox 1").check();
+        page.locator("text= checkbox 1").uncheck();
+        page.goBack();
+        List<WebElement> n1= page.locators("xpath=//li");
+        page.expect(n1).toHaveCount(43);
+    }
+
     @AfterTest
-    public void browserClose() throws SQLException {
+    public void browserClose(){
         driver.close();
         driver.quit();
     }
