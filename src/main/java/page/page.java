@@ -1,8 +1,7 @@
 package page;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.google.common.collect.BoundType;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,12 +10,17 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 
-public class page {
+public class page implements WebElement {
     private WebDriver driver;
     private WebElement foundElement;
     private List<WebElement> foundElements;
     public page(WebDriver driver){
         this.driver=driver;
+        System.out.println("# Playwright-Selenium Bridge : Leverage Playwright Features in Selenium Tests #");
+        System.out.println("************** *************** **************** ***************** *************");
+        System.out.println("************** ************ Coded by Praveen Kumar B ************ *************");
+        System.out.println("************** *************** **************** ***************** *************");
+        System.out.println();
     }
 
     public void goTo(String url){
@@ -32,22 +36,102 @@ public class page {
         foundElement. click();
     }
 
-    public void selectDropdown(String value) {
-        //WebElement dropdownElement = locator(element);
-        Select dropdown = new Select(foundElement);
-        dropdown.selectByVisibleText(value); // Or use selectByIndex(int index)
+    @Override
+    public void submit() {
+
     }
 
-    public page locator(@org.jetbrains.annotations.NotNull String element) {
+    @Override
+    public void sendKeys(CharSequence... keysToSend) {
+
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public String getTagName() {
+        return "";
+    }
+
+    @Override
+    public String getAttribute(String name) {
+        return "";
+    }
+
+    @Override
+    public boolean isSelected() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
+    @Override
+    public String getText() {
+        return "";
+    }
+
+    @Override
+    public List<WebElement> findElements(By by) {
+        return List.of();
+    }
+
+    @Override
+    public WebElement findElement(By by) {
+        return null;
+    }
+
+    @Override
+    public boolean isDisplayed() {
+        return false;
+    }
+
+    @Override
+    public Point getLocation() {
+        return null;
+    }
+
+    @Override
+    public Dimension getSize() {
+        return null;
+    }
+
+    @Override
+    public Rectangle getRect() {
+        return null;
+    }
+
+    @Override
+    public String getCssValue(String propertyName) {
+        return "";
+    }
+
+    //Custom functions coded by <Praveen Kumar B>
+    public void selectDropdown(String text) {
+        //WebElement dropdownElement = locator(element);
+        Select dropdown = new Select(foundElement);
+        dropdown.selectByVisibleText(text); // Or use selectByIndex(int index)
+    }
+
+    public page locator(String element) {
         HashMap<String, String> el = new HashMap<>();
         String[] parts = element.split("=");
 
-        if (parts.length != 2) {
+        String locatorType = parts[0];
+        String locatorValue ;
+        if(parts[0].equals("xpath") && parts.length>2){
+             locatorValue=parts[1]+"="+parts[2];
+        }
+        else locatorValue = parts[1];
+
+        if (parts.length != 2 && !(parts[0].equals("xpath"))) {
             throw new IllegalArgumentException("Invalid locator format. Expected 'type=value'");
         }
-
-        String locatorType = parts[0];
-        String locatorValue = parts[1];
 
         switch (locatorType.toLowerCase()) {
             case "id":
@@ -72,6 +156,9 @@ public class page {
             case "tagname":
                 foundElement = driver.findElement(By.tagName(locatorValue));
                 break;
+            case "text":
+                foundElement = driver.findElement(By.xpath("//*[text()='"+locatorValue+"']"));
+                break;
             default:
                 throw new IllegalArgumentException("Unsupported locator type: " + locatorType);
         }
@@ -83,24 +170,34 @@ public class page {
         return this;
     }
 
-    public page getByLabel(String label){
-        foundElement = driver.findElement(By.xpath("//label[text()='"+label+"'])"));
-        return this;
+    public WebElement getByLabel(String label){
+        foundElement = driver.findElement(By.xpath("//label[text()='"+label+"']"));
+        return this.foundElement;
     }
 
-    public page getByText(String text){
-        foundElement = driver.findElement(By.xpath("//*[text()='"+text+"'])"));
-        return this;
+    public WebElement getByText(String text){
+      foundElement = driver.findElement(By.xpath("//*[text()='"+text+"']"));
+        return this.foundElement;
     }
 
     public boolean toBeVisible(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(3000)); // Change timeout value if needed
         wait.until(ExpectedConditions.visibilityOf(foundElement));
-
-            // Verify element visibility (optional)
+        // Verify element visibility (optional)
         return foundElement.isDisplayed();
     }
 
+    public void check(){
+        if (!foundElement.isSelected()) {
+            foundElement.click();
+        }
+    }
+
+    public void uncheck(){
+        if (foundElement.isSelected()) {
+            foundElement.click();
+        }
+    }
     public page expect(WebElement foundElement){
         if (foundElement != null) {
             System.out.println("Element is found : "+ foundElement);
@@ -163,5 +260,18 @@ public class page {
                 throw new IllegalArgumentException("Unsupported locator type: " + locatorType);
         }
         return foundElements;
+    }
+
+    public void goBack() {
+        driver.navigate().back();
+    }
+
+    public boolean toHaveTitle(String title) {
+        return driver.getTitle().equals(title);
+    }
+
+    @Override
+    public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
+        return null;
     }
 }
