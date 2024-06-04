@@ -45,6 +45,7 @@ public class AppTest
         page.goBack();
         List<WebElement> n1= page.locators("xpath=//li");
         page.expect(n1).toHaveCount(43);
+        page.getByPlaceholder("sample text").click();
     }
 
     @AfterTest

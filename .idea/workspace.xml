@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30b948f4-02fc-4e7a-98be-3229383c3eb2" name="Changes" comment="with illegalArgumentException">
-      <change afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/page/page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/page/page.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
     </list>
@@ -31,39 +29,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {}
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/praveenkk21/playwrightInJava&quot;,
-    &quot;accountId&quot;: &quot;ec8e67b0-9b35-4ace-b9b2-454ff7199bc6&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
   <component name="ProjectId" id="2h9ESFg30w9thg454oqtBeWumLK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AppTest.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "Maven.playwright [test].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TestNG.AppTest.executor": "Run",
-    "TestNG.D:/SpringBoot/demo/playwrightInJava/testng.xml.executor": "Run",
-    "git-widget-placeholder": "working",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/playwrightInJava/playwright",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
-  }
-}]]></component>
   <component name="RunManager" selected="TestNG.D:/SpringBoot/demo/playwrightInJava/testng.xml">
     <configuration name="AppTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.AppTest" />
@@ -138,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717061296931</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="with getByPlaceholder">
+      <created>1717497452423</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717497452423</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,7 +134,8 @@
     <MESSAGE value="new" />
     <MESSAGE value="new improvement" />
     <MESSAGE value="with illegalArgumentException" />
-    <option name="LAST_COMMIT_MESSAGE" value="with illegalArgumentException" />
+    <MESSAGE value="with getByPlaceholder" />
+    <option name="LAST_COMMIT_MESSAGE" value="with getByPlaceholder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -167,7 +146,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/page/page.java</url>
-          <line>195</line>
+          <line>200</line>
           <properties class="page.page" method="uncheck">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -176,7 +155,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/page/page.java</url>
-          <line>189</line>
+          <line>194</line>
           <properties class="page.page" method="check">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

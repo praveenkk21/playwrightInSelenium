@@ -180,6 +180,11 @@ public class page implements WebElement {
         return this.foundElement;
     }
 
+    public WebElement getByPlaceholder(String placeholderText){
+        foundElement = driver.findElement(By.xpath("//input[@placeholder='" + placeholderText + "']"));
+        return this.foundElement;
+    }
+
     public boolean toBeVisible(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(3000)); // Change timeout value if needed
         wait.until(ExpectedConditions.visibilityOf(foundElement));
