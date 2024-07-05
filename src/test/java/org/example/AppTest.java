@@ -30,6 +30,7 @@ public class AppTest
         page page=new page(driver);
         page.goTo("https://the-internet.herokuapp.com/");
         WebElement element= page.locator("xpath=//*[text()='Dropdown']");
+        //page.getByTitle("test");
         page.toHaveTitle("The Internet");
         page.locator("xpath=//*[text()='Dropdown']").click();
         page.locator("id=dropdown").selectDropdown("Option 1");

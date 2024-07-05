@@ -279,4 +279,9 @@ public class page implements WebElement {
     public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
         return null;
     }
+
+    public void getByTitle(String titleValue) {
+        driver.findElement(By.xpath("//*[@title='"+titleValue+"']"));
+    }
+
 }
