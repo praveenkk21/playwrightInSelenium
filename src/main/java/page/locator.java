@@ -17,7 +17,6 @@
 //
 //        String locatorType = parts[0];
 //        String locatorValue = parts[1];
-//
 //        WebElement foundElement;
 //        switch (locatorType.toLowerCase()) {
 //            case "id":
@@ -32,7 +31,8 @@
 //            case "cssselector":
 //            case "css": // Handle both "cssselector" and "css" variations
 //                foundElement = driver.findElement(By.cssSelector(locatorValue));
-//                break;
+//               
+//break;
 //            case "linktext":
 //                foundElement = driver.findElement(By.linkText(locatorValue));
 //                break;
